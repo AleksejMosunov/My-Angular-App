@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './footer.css',
 })
 export class Footer {
-
+  protected readonly githubUrl = 'https://github.com/AleksejMosunov';
+  protected readonly apiUrl = 'https://api.api-ninjas.com';
 }
