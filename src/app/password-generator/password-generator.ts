@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { PasswordService } from '../services/password-service';
-import { FormsModule } from '@angular/forms'; // <-- обязательно
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
