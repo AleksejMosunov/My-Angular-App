@@ -6,6 +6,7 @@ import { Password } from '../models/password.model';
 
 @Component({
   selector: 'app-password-generator',
+  standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './password-generator.html',
   styleUrl: './password-generator.css',
@@ -17,6 +18,8 @@ export class PasswordGeneratorComponent {
   protected includeUppercase = true;
   protected includeNumbers = true;
   protected includeSpecial = true;
+
+  protected readonly title = 'Password Generator';
 
   constructor(private passwordService: PasswordService) {}
 
