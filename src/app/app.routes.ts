@@ -12,4 +12,12 @@ export const routes: Routes = [
     path: 'about',
     component: About,
   },
+  {
+    path: 'notes',
+    loadComponent: () => import('./pages/note/note').then((m) => m.NoteComponent),
+  },
+  {
+    path: 'notes/:id',
+    loadComponent: () => import('./pages/note-detail/note-detail').then((m) => m.NoteDetail),
+  },
 ];
