@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { PasswordService } from '../services/password-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Password } from '../models/password.model';
 
 @Component({
   selector: 'app-password-generator',
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './password-generator.css',
 })
 export class PasswordGeneratorComponent {
-  protected readonly password = signal('');
+  protected readonly password = signal<Password | null>(null);
   protected length = 12;
   protected includeLowercase = true;
   protected includeUppercase = true;
@@ -29,12 +30,19 @@ export class PasswordGeneratorComponent {
         this.includeSpecial,
       )
       .subscribe((res) => {
-        this.password.set(res.password);
+        const newPassword: Password = {
+          id: Date.now(),
+          value: res.password,
+          cratedAt: new Date(),
+        };
+
+        this.password.set(newPassword);
+        console.log('Generated password:', newPassword);
       });
   }
 
   copyToClipboard() {
-    navigator.clipboard.writeText(this.password()).then(
+    navigator.clipboard.writeText(this.password()?.value || '').then(
       () => {
         alert('Password copied to clipboard!');
       },
