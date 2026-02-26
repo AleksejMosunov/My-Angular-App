@@ -1,29 +1,18 @@
 import { Component, signal } from '@angular/core';
 import { NoteService } from '../../services/note-service';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Note } from '../../models/note.model';
 import { RouterModule } from '@angular/router';
-import { NoteAdd } from '../../components/note-add/note-add';
 
 @Component({
-  selector: 'app-note',
-  standalone: true,
-  imports: [CommonModule, FormsModule, NoteAdd, RouterModule],
-  templateUrl: './note.html',
-  styleUrl: './note.css',
+  selector: 'app-note-add',
+  imports: [FormsModule, CommonModule, RouterModule],
+  templateUrl: './note-add.html',
+  styleUrl: './note-add.css',
 })
-export class NoteComponent {
+export class NoteAdd {
   constructor(private noteService: NoteService) {}
-
-  onNoteClick() {
-    alert('Note clicked!');
-    console.log('Note clicked');
-  }
-
-  protected get notes() {
-    return this.noteService.getNotes();
-  }
 
   protected newNote = signal<Partial<Note>>({
     title: '',

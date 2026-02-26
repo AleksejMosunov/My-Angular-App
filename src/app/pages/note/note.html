@@ -9,14 +9,5 @@
       <a [routerLink]="['/notes', note.id]" class="details-btn">Деталі</a>
     </div>
   </div>
-
-  <div class="note-form">
-    <input type="text" placeholder="Note Title" [ngModel]="newNote()?.title || ''"
-      (ngModelChange)="newNote.set({ ...newNote(), title: $event })" />
-
-    <textarea placeholder="Note Content" [ngModel]="newNote()?.content || ''"
-      (ngModelChange)="newNote.set({ ...newNote(), content: $event })"></textarea>
-
-    <button (click)="addNote()">Додати нотатку</button>
-  </div>
+  <app-note-add></app-note-add>
 </div>
